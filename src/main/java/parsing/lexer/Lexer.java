@@ -2,7 +2,6 @@ package parsing.lexer;
 
 public abstract class Lexer {
     public static final char EOF = (char) -1;
-    public static final int EOF_STRING = 1;
 
     private final String input;
     private int pos;

@@ -1,10 +1,10 @@
 package parsing.lexer;
 
 public class Token {
-    private int type;
+    private TokenType type;
     private String text;
 
-    public Token(int type, String text) {
+    public Token(TokenType type, String text) {
         this.type = type;
         this.text = text;
     }

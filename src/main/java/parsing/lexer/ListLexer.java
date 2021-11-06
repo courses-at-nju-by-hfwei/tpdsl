@@ -1,65 +1,60 @@
 package parsing.lexer;
 
-import static java.lang.Character.isLetter;
-import static org.stringtemplate.v4.compiler.STLexer.EOF_TYPE;
-
 public class ListLexer extends Lexer {
-    /**
-     * TODO: using enum
-     */
-    public static int NAME = 2;
-    public static int COMMA = 3;
-    public static int LBRACK = 4;
-    public static int RBRACK = 5;
-
-    public static String[] tokenNames = {
-            "null", "EOF", "NAME", "COMMA", "LBRACK", "RBRACK"
-    };
-
     public ListLexer(String input) {
         super(input);
     }
 
     @Override
     public Token nextToken() {
-        /**
-         * TODO: using if
-         */
-        while (this.ch != EOF) {
-            switch (this.ch) {
-                case ' ' : case '\t' : case '\r' : case '\n' :
-                    WS();
-                    continue;
-                case ',' :
-                    consume();
-                    return new Token(COMMA, ",");
-                case '[' :
-                    consume();
-                    return new Token(LBRACK, "[");
-                case ']' :
-                    consume();
-                    return new Token(LBRACK, "]");
-                default :
-                    if (isLetter(this.ch)) {
-                        return NAME();
-                    }
-                    throw new Error("Invalid character: " + this.ch);
-            }
+        if (this.ch == EOF) {
+            return new Token(TokenType.EOF, "EOF");
         }
-        return new Token(EOF_TYPE, "EOF");
+
+        if (Character.isWhitespace(this.ch)) {
+           WS();
+        }
+
+        if (Character.isLetter(this.ch)) {
+            return NAME();
+        }
+
+        if (this.ch == ',') {
+            consume();
+            return new Token(TokenType.COMMA, ",");
+        }
+
+        if (this.ch == ']') {
+            consume();
+            return new Token(TokenType.LBRACK, "[");
+        }
+
+        if (this.ch == '[') {
+            consume();
+            return new Token(TokenType.LBRACK, "]");
+        }
+
+        throw new Error("Invalid character: " + this.ch);
     }
 
     private Token NAME() {
-        // TODO
-        return null;
+        StringBuilder sb = new StringBuilder();
+        do {
+            sb.append(this.ch);
+            consume();
+        } while (Character.isLetter(this.ch));
+
+        return new Token(TokenType.NAME, sb.toString());
     }
 
     private void WS() {
-        // TODO
+        while (Character.isWhitespace(this.ch)) {
+            consume();
+        }
     }
 
     @Override
     public String getTokenName(int tokenType) {
-        return tokenNames[tokenType];
+        return TokenType.values()[tokenType].name();
     }
 }
