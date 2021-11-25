@@ -1,0 +1,10 @@
+LBRACK=1
+RBRACK=2
+COMMA=3
+ASSIGN=4
+NAME=5
+WS=6
+'['=1
+']'=2
+','=3
+'='=4
