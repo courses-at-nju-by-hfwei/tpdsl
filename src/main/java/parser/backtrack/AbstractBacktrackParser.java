@@ -1,16 +1,17 @@
 package parser.backtrack;
 
-/**
- * Excerpted from "Language Implementation Patterns",
- * published by The Pragmatic Bookshelf.
- * Copyrights apply to this code. It may not be used to create training material, 
- * courses, books, articles, and the like. Contact us if you are in doubt.
- * We make no guarantees that this code is fit for any purpose. 
- * Visit http://www.pragmaticprogrammer.com/titles/tpdsl for more book information.
+/*
+  Excerpted from "Language Implementation Patterns",
+  published by The Pragmatic Bookshelf.
+  Copyrights apply to this code. It may not be used to create training material,
+  courses, books, articles, and the like. Contact us if you are in doubt.
+  We make no guarantees that this code is fit for any purpose.
+  Visit http://www.pragmaticprogrammer.com/titles/tpdsl for more book information.
  */
 
 import lexer.Lexer;
 import lexer.Token;
+import parser.exception.MismatchedTokenException;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
@@ -40,6 +41,20 @@ public abstract class AbstractBacktrackParser {
         sync(1);
     }
 
+    private boolean isSpeculating() {
+        return !markers.isEmpty();
+    }
+
+    public void match(int token) throws MismatchedTokenException {
+        if (LA(1) == token) {
+            consume();
+        } else {
+            throw new MismatchedTokenException(
+                    "Expected: " + input.getTokenName(token) +
+                            "; Found: " + LT(1));
+        }
+    }
+
     // Make sure we have i tokens from current position p
     private void sync(int nums) {
         // out of tokens?
@@ -49,33 +64,20 @@ public abstract class AbstractBacktrackParser {
         }
     }
 
-    public Token LT(int i) {
-        sync(i);
-        return buffer.get(pos + i - 1);
+    public Token LT(int la) {
+        sync(la);
+        return buffer.get(pos + la - 1);
     }
 
-    public int LA(int i) {
-        return LT(i).getType();
+    public int LA(int la) {
+        return LT(la).getType();
     }
 
-    public void match(int x) throws MismatchedTokenException {
-        if (LA(1) == x) {
-            consume();
-        } else {
-            throw new MismatchedTokenException("expecting "+
-                    input.getTokenName(x)+" found "+LT(1));
-        }
-    }
-    
     public void mark() {
         markers.push(pos);
     }
 
     public void release() {
         pos = markers.pop();
-    }
-
-    private boolean isSpeculating() {
-        return !markers.isEmpty();
     }
 }

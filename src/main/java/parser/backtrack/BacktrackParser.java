@@ -2,6 +2,8 @@ package parser.backtrack;
 
 import lexer.Lexer;
 import lexer.ListLexer;
+import parser.exception.ListRecognitionException;
+import parser.exception.NoViableAltException;
 
 /**
  * Excerpted from "Language Implementation Patterns",
@@ -17,16 +19,18 @@ public class BacktrackParser extends AbstractBacktrackParser {
 
     // stat : list EOF | assign EOF
     public void stat() throws ListRecognitionException {
-        if (speculateStatAlt1()) {
-            list(); match(Lexer.EOF_TYPE);
-        } else if (speculateStatAlt2()) {
-            assign(); match(Lexer.EOF_TYPE);
+        if (speculateStatAltList()) {
+            list();
+            match(Lexer.EOF_TYPE);
+        } else if (speculateStatAltAssign()) {
+            assign();
+            match(Lexer.EOF_TYPE);
         } else {
-            throw new NoViableAltException("expecting stat found "+LT(1));
+            throw new NoViableAltException("Expecting stat found " + LT(1));
         }
     }
 
-    private boolean speculateStatAlt1() {
+    private boolean speculateStatAltList() {
         boolean success = true;
 
         mark();
@@ -41,7 +45,7 @@ public class BacktrackParser extends AbstractBacktrackParser {
         return success;
     }
 
-    private boolean speculateStatAlt2() {
+    private boolean speculateStatAltAssign() {
         boolean success = true;
 
         mark();
@@ -89,7 +93,7 @@ public class BacktrackParser extends AbstractBacktrackParser {
         } else if (LA(1)==ListLexer.LBRACK) {
             list();
         } else {
-            throw new NoViableAltException("expecting element found "+LT(1));
+            throw new NoViableAltException("Expected: element; Found: " + LT(1));
         }
     }
 }

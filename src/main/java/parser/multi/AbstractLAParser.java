@@ -2,6 +2,7 @@ package parser.multi;
 
 import lexer.Lexer;
 import lexer.Token;
+import parser.exception.MismatchedTokenException;
 
 /**
  * Excerpted from "Language Implementation Patterns",
@@ -13,25 +14,40 @@ import lexer.Token;
  */
 
 public abstract class AbstractLAParser {
-    Lexer input;       // from where do we get tokens?
-    Token[] lookahead; // circular lookahead buffer
-    int k;             // how many lookahead symbols
-    int p = 0;         // circular index of next token position to fill
-    public AbstractLAParser(Lexer input, int k) {
+    Lexer input;
+    Token[] buffer;     // circular buffer
+    int laCapacity;
+    int pos = 0;        // position in @buffer
+
+    public AbstractLAParser(Lexer input, int laCapacity) {
         this.input = input;
-        this.k = k;
-        lookahead = new Token[k];           // make lookahead buffer
-        for (int i=1; i<=k; i++) consume(); // prime buffer with k lookahead
+        this.laCapacity = laCapacity;
+        buffer = new Token[laCapacity];
+        for (int i = 1; i<= laCapacity; i++) {
+            consume();
+        }
     }
+
     public void consume() {
-        lookahead[p] = input.nextToken();   // fill next position with token
-        p = (p+1) % k;                      // increment circular index
+        buffer[pos] = input.nextToken();
+        pos = (pos+1) % laCapacity;
     }
-    public Token LT(int i) {return lookahead[(p+i-1) % k];} // circular fetch
-    public int LA(int i) { return LT(i).getType(); }
-    public void match(int x) {
-        if ( LA(1) == x ) consume();
-        else throw new Error("expecting "+input.getTokenName(x)+
-                             "; found "+LT(1));
+
+    public Token LT(int la) {
+        return buffer[(pos + la - 1) % laCapacity];
+    }
+
+    public int LA(int la) {
+        return LT(la).getType();
+    }
+
+    public void match(int token) throws MismatchedTokenException {
+        if ( LA(1) == token ) {
+            consume();
+        } else {
+            throw new MismatchedTokenException(
+                    "Expected: " + input.getTokenName(token) +
+                    "; Found: " + LT(1));
+        }
     }
 }

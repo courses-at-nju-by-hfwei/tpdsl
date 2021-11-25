@@ -4,6 +4,8 @@ import lexer.Lexer;
 import lexer.ListLexer;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import parser.exception.MismatchedTokenException;
+import parser.exception.NoViableAltException;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -21,6 +23,12 @@ public class LAParserTest {
 
     @Test
     public void testList() {
-        parser.list();
+        try {
+            parser.list();
+        } catch (MismatchedTokenException mte) {
+            mte.printStackTrace();
+        } catch (NoViableAltException nvae) {
+            nvae.printStackTrace();
+        }
     }
 }
