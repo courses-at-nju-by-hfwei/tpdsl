@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="parser.rd.ListParserTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2021-11-25T02:28:58" hostname="hengxin-ubuntu" time="0.024">
+<testsuite name="parser.multi.LookaheadParserTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2021-11-25T02:46:22" hostname="hengxin-ubuntu" time="0.021">
   <properties/>
-  <testcase name="testList" classname="parser.rd.ListParserTest" time="0.024">
-    <failure message="java.lang.Error: expecting name or list; found &lt;']',RBRACK&gt;" type="java.lang.Error">java.lang.Error: expecting name or list; found &lt;']',RBRACK&gt;
-	at parser.rd.ListParser.element(ListParser.java:43)
-	at parser.rd.ListParser.elements(ListParser.java:32)
-	at parser.rd.ListParser.list(ListParser.java:23)
-	at parser.rd.ListParserTest.testList(ListParserTest.java:25)
+  <testcase name="testList" classname="parser.multi.LookaheadParserTest" time="0.021">
+    <failure message="java.lang.Error: expecting name or list; found &lt;',',COMMA&gt;" type="java.lang.Error">java.lang.Error: expecting name or list; found &lt;',',COMMA&gt;
+	at parser.multi.LookaheadParser.element(LookaheadParser.java:43)
+	at parser.multi.LookaheadParser.elements(LookaheadParser.java:28)
+	at parser.multi.LookaheadParser.list(LookaheadParser.java:20)
+	at parser.multi.LookaheadParserTest.testList(LookaheadParserTest.java:26)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)

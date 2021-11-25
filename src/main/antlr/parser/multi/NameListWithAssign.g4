@@ -13,5 +13,10 @@ element  : NAME '=' NAME
          | list
          ;
 
+LBRACK : '[' ;
+RBRACK : ']' ;
+COMMA : ',' ;
+ASSIGN : '=' ;
+
 NAME : [a-zA-Z]+ ;
 WS : [ \t\n\r]+ -> skip ;

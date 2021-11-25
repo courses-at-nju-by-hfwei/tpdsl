@@ -8,16 +8,16 @@ null
 
 token symbolic names:
 null
-null
-null
-null
+LBRACK
+RBRACK
+COMMA
 NAME
 WS
 
 rule names:
-T__0
-T__1
-T__2
+LBRACK
+RBRACK
+COMMA
 NAME
 WS
 

@@ -19,7 +19,7 @@ public class NameListWithAssignParser extends Parser {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		T__0=1, T__1=2, T__2=3, T__3=4, NAME=5, WS=6;
+		LBRACK=1, RBRACK=2, COMMA=3, ASSIGN=4, NAME=5, WS=6;
 	public static final int
 		RULE_list = 0, RULE_elements = 1, RULE_element = 2;
 	private static String[] makeRuleNames() {
@@ -37,7 +37,7 @@ public class NameListWithAssignParser extends Parser {
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
 	private static String[] makeSymbolicNames() {
 		return new String[] {
-			null, null, null, null, null, "NAME", "WS"
+			null, "LBRACK", "RBRACK", "COMMA", "ASSIGN", "NAME", "WS"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
@@ -92,9 +92,11 @@ public class NameListWithAssignParser extends Parser {
 	}
 
 	public static class ListContext extends ParserRuleContext {
+		public TerminalNode LBRACK() { return getToken(NameListWithAssignParser.LBRACK, 0); }
 		public ElementsContext elements() {
 			return getRuleContext(ElementsContext.class,0);
 		}
+		public TerminalNode RBRACK() { return getToken(NameListWithAssignParser.RBRACK, 0); }
 		public ListContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -121,11 +123,11 @@ public class NameListWithAssignParser extends Parser {
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(6);
-			match(T__0);
+			match(LBRACK);
 			setState(7);
 			elements();
 			setState(8);
-			match(T__1);
+			match(RBRACK);
 			}
 		}
 		catch (RecognitionException re) {
@@ -145,6 +147,10 @@ public class NameListWithAssignParser extends Parser {
 		}
 		public ElementContext element(int i) {
 			return getRuleContext(ElementContext.class,i);
+		}
+		public List<TerminalNode> COMMA() { return getTokens(NameListWithAssignParser.COMMA); }
+		public TerminalNode COMMA(int i) {
+			return getToken(NameListWithAssignParser.COMMA, i);
 		}
 		public ElementsContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -177,11 +183,11 @@ public class NameListWithAssignParser extends Parser {
 			setState(15);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while (_la==T__2) {
+			while (_la==COMMA) {
 				{
 				{
 				setState(11);
-				match(T__2);
+				match(COMMA);
 				setState(12);
 				element();
 				}
@@ -208,6 +214,7 @@ public class NameListWithAssignParser extends Parser {
 		public TerminalNode NAME(int i) {
 			return getToken(NameListWithAssignParser.NAME, i);
 		}
+		public TerminalNode ASSIGN() { return getToken(NameListWithAssignParser.ASSIGN, 0); }
 		public ListContext list() {
 			return getRuleContext(ListContext.class,0);
 		}
@@ -243,7 +250,7 @@ public class NameListWithAssignParser extends Parser {
 				setState(18);
 				match(NAME);
 				setState(19);
-				match(T__3);
+				match(ASSIGN);
 				setState(20);
 				match(NAME);
 				}

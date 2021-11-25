@@ -19,7 +19,7 @@ public class NameListParser extends Parser {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		T__0=1, T__1=2, T__2=3, NAME=4, WS=5;
+		LBRACK=1, RBRACK=2, COMMA=3, NAME=4, WS=5;
 	public static final int
 		RULE_list = 0, RULE_elements = 1, RULE_element = 2;
 	private static String[] makeRuleNames() {
@@ -37,7 +37,7 @@ public class NameListParser extends Parser {
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
 	private static String[] makeSymbolicNames() {
 		return new String[] {
-			null, null, null, null, "NAME", "WS"
+			null, "LBRACK", "RBRACK", "COMMA", "NAME", "WS"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
@@ -92,9 +92,11 @@ public class NameListParser extends Parser {
 	}
 
 	public static class ListContext extends ParserRuleContext {
+		public TerminalNode LBRACK() { return getToken(NameListParser.LBRACK, 0); }
 		public ElementsContext elements() {
 			return getRuleContext(ElementsContext.class,0);
 		}
+		public TerminalNode RBRACK() { return getToken(NameListParser.RBRACK, 0); }
 		public ListContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -121,11 +123,11 @@ public class NameListParser extends Parser {
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(6);
-			match(T__0);
+			match(LBRACK);
 			setState(7);
 			elements();
 			setState(8);
-			match(T__1);
+			match(RBRACK);
 			}
 		}
 		catch (RecognitionException re) {
@@ -145,6 +147,10 @@ public class NameListParser extends Parser {
 		}
 		public ElementContext element(int i) {
 			return getRuleContext(ElementContext.class,i);
+		}
+		public List<TerminalNode> COMMA() { return getTokens(NameListParser.COMMA); }
+		public TerminalNode COMMA(int i) {
+			return getToken(NameListParser.COMMA, i);
 		}
 		public ElementsContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -177,11 +183,11 @@ public class NameListParser extends Parser {
 			setState(15);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while (_la==T__2) {
+			while (_la==COMMA) {
 				{
 				{
 				setState(11);
-				match(T__2);
+				match(COMMA);
 				setState(12);
 				element();
 				}
@@ -241,7 +247,7 @@ public class NameListParser extends Parser {
 				match(NAME);
 				}
 				break;
-			case T__0:
+			case LBRACK:
 				enterOuterAlt(_localctx, 2);
 				{
 				setState(19);

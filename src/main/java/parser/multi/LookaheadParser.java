@@ -31,13 +31,16 @@ public class LookaheadParser extends AbstractLAParser {
 
     // element : NAME '=' NAME | NAME | list
     void element() {
-        if ( LA(1) == ListLexer.NAME && LA(2) == ListLexer.EQUALS ) {
+        if (LA(1) == ListLexer.NAME && LA(2) == ListLexer.EQUALS) {
             match(ListLexer.NAME);
             match(ListLexer.EQUALS);
             match(ListLexer.NAME);
+        } else if (LA(1) == ListLexer.NAME) {
+            match(ListLexer.NAME);
+        } else if (LA(1) == ListLexer.LBRACK) {
+            list();
+        } else {
+            throw new Error("expecting name or list; found "+LT(1));
         }
-        else if ( LA(1) == ListLexer.NAME ) match(ListLexer.NAME);
-        else if ( LA(1) == ListLexer.LBRACK ) list();
-        else throw new Error("expecting name or list; found "+LT(1));
     }
 }

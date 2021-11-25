@@ -19,7 +19,7 @@ public class NameListWithAssignLexer extends Lexer {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		T__0=1, T__1=2, T__2=3, T__3=4, NAME=5, WS=6;
+		LBRACK=1, RBRACK=2, COMMA=3, ASSIGN=4, NAME=5, WS=6;
 	public static String[] channelNames = {
 		"DEFAULT_TOKEN_CHANNEL", "HIDDEN"
 	};
@@ -30,7 +30,7 @@ public class NameListWithAssignLexer extends Lexer {
 
 	private static String[] makeRuleNames() {
 		return new String[] {
-			"T__0", "T__1", "T__2", "T__3", "NAME", "WS"
+			"LBRACK", "RBRACK", "COMMA", "ASSIGN", "NAME", "WS"
 		};
 	}
 	public static final String[] ruleNames = makeRuleNames();
@@ -43,7 +43,7 @@ public class NameListWithAssignLexer extends Lexer {
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
 	private static String[] makeSymbolicNames() {
 		return new String[] {
-			null, null, null, null, null, "NAME", "WS"
+			null, "LBRACK", "RBRACK", "COMMA", "ASSIGN", "NAME", "WS"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();

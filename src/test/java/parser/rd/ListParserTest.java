@@ -9,14 +9,12 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 public class ListParserTest {
-    private String input;
-    private ListLexer lexer;
     private ListParser parser;
 
     @BeforeMethod
     public void setUp() throws IOException {
-        input = Files.readString(Path.of("src/test/resources/parser/rd/NameList0.txt"));
-        lexer = new ListLexer(input);
+        String input = Files.readString(Path.of("src/test/resources/parser/rd/NameList0.txt"));
+        ListLexer lexer = new ListLexer(input);
         parser = new ListParser(lexer);
     }
 
