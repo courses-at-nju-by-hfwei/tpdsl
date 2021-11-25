@@ -12,8 +12,8 @@ import lexer.ListLexer;
  * Visit http://www.pragmaticprogrammer.com/titles/tpdsl for more book information.
  */
 
-public class LookaheadParser extends AbstractLAParser {
-    public LookaheadParser(Lexer input, int k) { super(input, k); }
+public class LAParser extends AbstractLAParser {
+    public LAParser(Lexer input, int k) { super(input, k); }
     
     // list : '[' elements ']'
     public void list() {

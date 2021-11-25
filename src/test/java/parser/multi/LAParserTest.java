@@ -9,16 +9,14 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
-import static org.testng.Assert.*;
-
-public class LookaheadParserTest {
-    private LookaheadParser parser;
+public class LAParserTest {
+    private LAParser parser;
 
     @BeforeMethod
     public void setUp() throws IOException {
         String input = Files.readString(Path.of("src/test/resources/parser/multi/NameListWithAssign0.txt"));
         Lexer lexer = new ListLexer(input);
-        parser = new LookaheadParser(lexer, 2);
+        parser = new LAParser(lexer, 2);
     }
 
     @Test
