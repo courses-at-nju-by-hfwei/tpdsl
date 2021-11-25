@@ -14,15 +14,20 @@ public class ListLexer extends Lexer {
     public static final int COMMA = 3;
     public static final int LBRACK = 4;
     public static final int RBRACK = 5;
+    public static int EQUALS = 6;
 
     public static final String[] tokenNames =
-        { "n/a", "<EOF>", "NAME", "COMMA", "LBRACK", "RBRACK" };
+        { "n/a", "<EOF>", "NAME", "COMMA", "LBRACK", "RBRACK", "EQUALS"};
     public String getTokenName(int x) {
         return tokenNames[x];
     }
 
-    public ListLexer(String input) { super(input); }
-    boolean isLETTER() { return c>='a'&&c<='z' || c>='A'&&c<='Z'; }
+    public ListLexer(String input) {
+        super(input);
+    }
+    boolean isLETTER() {
+        return Character.isLetter(c);
+    }
 
     public Token nextToken() {
         while ( c!=EOF ) {
@@ -31,9 +36,12 @@ public class ListLexer extends Lexer {
                 case ',' : consume(); return new Token(COMMA, ",");
                 case '[' : consume(); return new Token(LBRACK, "[");
                 case ']' : consume(); return new Token(RBRACK, "]");
+                case '=' : consume(); return new Token(EQUALS, "=");
                 default:
-                    if ( isLETTER() ) return NAME();
-                    throw new Error("invalid character: "+c);
+                    if ( isLETTER() ) {
+                        return NAME();
+                    }
+                    throw new Error("invalid character: " + c);
             }
         }
         return new Token(EOF_TYPE,"<EOF>");

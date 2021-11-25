@@ -3,13 +3,12 @@
 <suite name="Failed suite [Gradle suite]" verbose="0">
   <test thread-count="5" name="Gradle test(failed)" verbose="0">
     <classes>
-      <class name="parsing.lexer.ListLexerTest">
+      <class name="parser.rd.ListParserTest">
         <methods>
-          <include name="testNextToken"/>
-          <include name="tearDown"/>
+          <include name="testList"/>
           <include name="setUp"/>
         </methods>
-      </class> <!-- parsing.lexer.ListLexerTest -->
+      </class> <!-- parser.rd.ListParserTest -->
     </classes>
   </test> <!-- Gradle test(failed) -->
 </suite> <!-- Failed suite [Gradle suite] -->
