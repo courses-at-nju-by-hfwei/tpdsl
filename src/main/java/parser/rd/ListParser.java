@@ -2,6 +2,8 @@ package parser.rd;
 
 import lexer.Lexer;
 import lexer.ListLexer;
+import parser.exception.MismatchedTokenException;
+import parser.exception.NoViableAltException;
 
 /**
  * Excerpted from "Language Implementation Patterns",
@@ -18,14 +20,14 @@ public class ListParser extends AbstractListParser {
     }
     
     // list : '[' elements ']'
-    public void list() {
+    public void list() throws NoViableAltException, MismatchedTokenException {
         match(ListLexer.LBRACK);
         elements();
         match(ListLexer.RBRACK);
     }
 
     // elements : element (',' element)*
-    void elements() {
+    void elements() throws NoViableAltException, MismatchedTokenException {
         element();
         while (lookahead.getType() == ListLexer.COMMA) {
             match(ListLexer.COMMA);
@@ -34,13 +36,13 @@ public class ListParser extends AbstractListParser {
     }
 
     // element : NAME | list
-    void element() {
+    void element() throws NoViableAltException, MismatchedTokenException {
         if (lookahead.getType() == ListLexer.NAME ) {
             match(ListLexer.NAME);
         } else if (lookahead.getType() == ListLexer.LBRACK ) {
             list();
         } else {
-            throw new Error("expecting name or list; found "+lookahead);
+            throw new NoViableAltException("Expected: NAME or list; Found: " + lookahead);
         }
     }
 }

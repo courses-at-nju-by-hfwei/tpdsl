@@ -3,6 +3,9 @@ package parser.rd;
 import lexer.ListLexer;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import parser.exception.ListRecognitionException;
+import parser.exception.MismatchedTokenException;
+import parser.exception.NoViableAltException;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -20,6 +23,10 @@ public class ListParserTest {
 
     @Test
     public void testList() {
-        parser.list();
+        try {
+            parser.list();
+        } catch (ListRecognitionException lre) {
+          lre.printStackTrace();
+        }
     }
 }

@@ -4,6 +4,7 @@ grammar NameList;
     package parser.rd;
 }
 
+// [a, [b, c], d]
 list : '[' elements ']' ;
 
 elements : element (',' element)* ;

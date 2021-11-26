@@ -4,6 +4,7 @@ grammar NameListWithAssign;
     package parser.multi;
 }
 
+// [a, b = c, [d, [e = f]]]
 list : '[' elements ']' ;
 
 elements : element (',' element)* ;

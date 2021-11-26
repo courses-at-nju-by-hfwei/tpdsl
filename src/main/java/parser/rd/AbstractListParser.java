@@ -2,6 +2,7 @@ package parser.rd;
 
 import lexer.Lexer;
 import lexer.Token;
+import parser.exception.MismatchedTokenException;
 
 /**
  * Excerpted from "Language Implementation Patterns",
@@ -16,7 +17,7 @@ public abstract class AbstractListParser {
     protected Lexer input;     // from where do we get tokens?
     protected Token lookahead; // the current lookahead token
 
-    public AbstractListParser(Lexer input) {
+    protected AbstractListParser(Lexer input) {
         this.input = input;
         consume();
     }
@@ -25,13 +26,14 @@ public abstract class AbstractListParser {
         lookahead = input.nextToken();
     }
 
-    public void match(int x) {
-        if (lookahead.getType() == x ) {
+    public void match(int token) throws MismatchedTokenException {
+        if (lookahead.getType() == token ) {
             consume();
         }
         else {
-            throw new Error("expecting "+input.getTokenName(x)+
-                    "; found "+ lookahead);
+            throw new MismatchedTokenException(
+                    "Expected: " + input.getTokenName(token) +
+                            "; Found: " + lookahead);
         }
     }
 }

@@ -4,6 +4,8 @@ grammar NameListWithParallelAssign;
     package parser.backtrack;
 }
 
+// [a, b = c, [d, [e = f]]]
+// [a, b = c] = [d, [e = f]]
 stat : list EOF
      | assign EOF
      ;

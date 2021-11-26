@@ -4,6 +4,7 @@ import lexer.Lexer;
 import lexer.ListLexer;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import parser.exception.ListRecognitionException;
 import parser.exception.MismatchedTokenException;
 import parser.exception.NoViableAltException;
 
@@ -25,10 +26,8 @@ public class LAParserTest {
     public void testList() {
         try {
             parser.list();
-        } catch (MismatchedTokenException mte) {
-            mte.printStackTrace();
-        } catch (NoViableAltException nvae) {
-            nvae.printStackTrace();
+        } catch (ListRecognitionException lre) {
+            lre.printStackTrace();
         }
     }
 }
