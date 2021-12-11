@@ -3,12 +3,12 @@
 <suite name="Failed suite [Gradle suite]" verbose="0">
   <test thread-count="5" name="Gradle test(failed)" verbose="0">
     <classes>
-      <class name="parser.multi.LookaheadParserTest">
+      <class name="symtab.simple.DefSymbolsAndScopesTest">
         <methods>
-          <include name="testList"/>
+          <include name="testFile"/>
           <include name="setUp"/>
         </methods>
-      </class> <!-- parser.multi.LookaheadParserTest -->
+      </class> <!-- symtab.simple.DefSymbolsAndScopesTest -->
     </classes>
   </test> <!-- Gradle test(failed) -->
 </suite> <!-- Failed suite [Gradle suite] -->

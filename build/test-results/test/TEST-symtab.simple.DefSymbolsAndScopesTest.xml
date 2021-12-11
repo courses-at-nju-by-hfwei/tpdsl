@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="symtab.simple.DefSymbolsAndScopesTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-12-11T12:40:38" hostname="hengxin-ubuntu" time="0.041">
+  <properties/>
+  <testcase name="testFile" classname="symtab.simple.DefSymbolsAndScopesTest" time="0.041"/>
+  <system-out><![CDATA[(file (var var x) (func def f ( (arg a) ) : (block [ (body (var var y) (stat print y) (stat print x) (stat print a) (stat (block [ (body (var var x) (stat print x) (stat print y)) ]))) ])) (var var z) <EOF>)
+Entering global: []
+Entering f: f:[]
+Entering local: []
+Entering local: []
+Leaving local: [x]
+Leaving local: [y]
+Leaving f: f:[a]
+Leaving global: [x, f, z]
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
