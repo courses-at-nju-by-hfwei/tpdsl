@@ -50,5 +50,8 @@ public class FunctionSymbol extends SymbolWithScope implements TypedSymbol {
 		return Utils.filter(symbols.values(), s -> s instanceof ParameterSymbol).size();
 	}
 
-	public String toString() { return name + " : " + super.toString(); }
+	@Override
+	public String toString() {
+		return name + " : " + super.toString();
+	}
 }

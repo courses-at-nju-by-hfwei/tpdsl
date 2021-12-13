@@ -11,29 +11,30 @@ grammar Cymbol;
     package symtab.cymbol;
 }
 
-prog : (varDecl | functionDecl)+ EOF
-     ;
+prog : (varDecl | structDecl | functionDecl )+ EOF ;
 
-varDecl :   type ID ('=' expr)? ';'
-        ;
+varDecl : type ID ('=' expr)? ';' ;
+
+structDecl : 'struct' ID '{' structMember+ '}' ';' ;
+
+structMember : type ID ';'
+             | structDecl
+             ;
+
+functionDecl : type ID '(' paras? ')' block ;
+
+paras : type ID (',' type ID)* ;
 
 type : 'int'
      | 'float'
      | 'void'
+     | ID   // struct type name
      ;
-
-functionDecl : type ID '(' formalParameters? ')' block
-             ;
-
-formalParameters : formalParameter (',' formalParameter)*
-                 ;
-
-formalParameter : type ID
-                ;
 
 block : '{' stat* '}' ;
 
 stat : block
+     | structDecl
      | varDecl
      | 'if' expr stat ('else' stat)?
      | 'while' expr stat
@@ -44,10 +45,11 @@ stat : block
      ;
 
 expr: '(' expr ')'
-    | ID '(' exprList? ')'    // function call
+    | ID '(' args? ')'        // function call
     | expr '[' expr ']'       // array subscripts
-    | '-' expr                // right association
-    | '!' expr                // right association
+    | expr '.' expr           // member access (hfwei)
+    | '-' expr
+    | '!' expr
     | <assoc=right> expr '^' expr
     | expr ('*'|'/') expr
     | expr ('+'|'-') expr
@@ -58,13 +60,11 @@ expr: '(' expr ')'
     | INT
     ;
 
-exprList : expr (',' expr)* ;
-
+args : expr (',' expr)* ;
 ////////////////////////////////////////////
 // You can use "Alt + Insert" to automatically generate
 // the following lexer rules for literals in the grammar above.
 // Note: Remember to rename the automatically generated 'INT' to avoid clash.
-
 EQUAL : '=' ;
 SEMI : ';' ;
 LPAREN : '(' ;
@@ -96,8 +96,9 @@ EQUAL_EQUAL : '==' ;
 NOT_EQUAL : '!=' ;
 LAND : '&&' ;
 LOR : '||' ;
+STRUCT : 'struct' ;
+DOT : '.' ;
 ////////////////////////////////////////////
-
 ID : LETTER (LETTER | [0-9])* ;
 fragment
 LETTER : [a-zA-Z] ;

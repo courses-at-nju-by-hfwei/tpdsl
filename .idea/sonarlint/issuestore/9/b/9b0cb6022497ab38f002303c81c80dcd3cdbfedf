@@ -1,0 +1,12 @@
+
+q	java:S116"URename this field "PREDEFINED" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¦Íº8¶àÎÍÚ/
+s	java:S116"RRename this field "GLOBALS" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ŠÚ¥ƒıÿÿÿÿ8¸àÎÍÚ/
+
+java:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¦øÓ‰8»àÎÍÚ/
+
+java:S1186
+"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¤ÖÆµ8½àÎÍÚ/
+s
+java:S1104"VMake PREDEFINED a static final constant or non-public and provide accessors if needed.(¦Íº8ÇàÎÍÚ/
+u
+java:S1104"SMake GLOBALS a static final constant or non-public and provide accessors if needed.(ŠÚ¥ƒıÿÿÿÿ8ÈàÎÍÚ/

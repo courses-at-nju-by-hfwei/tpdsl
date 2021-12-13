@@ -1,0 +1,8 @@
+
+H
+java:S2160
+"+Override the "equals" method in this class.(Ô«ì½8ÖßÌÚ/
+o
+java:S1612."MReplace this lambda with method reference 'VariableSymbol.class::isInstance'.(ÜƒĞÅşÿÿÿÿ8èßÌÚ/
+p
+java:S16122"NReplace this lambda with method reference 'ParameterSymbol.class::isInstance'.(Éíéıÿÿÿÿ8ëßÌÚ/

@@ -53,8 +53,6 @@ L
 src/main/antlr/ir/VecMath.g4,3/1/31464ada237bf4831cfe66b583cba88376b23d5f
 U
 %src/main/java/symtab/StringTable.java,f/6/f65aec9127b871752635f3793183decc52e29e92
-U
-%src/main/java/symtab/SymbolTable.java,9/b/9b0cb6022497ab38f002303c81c80dcd3cdbfedf
 S
 #src/main/java/symtab/TypeAlias.java,e/2/e236347f3da9570677b29dc0be274a4ff2298dec
 O
@@ -71,18 +69,12 @@ Y
 )src/main/java/symtab/ParameterSymbol.java,a/9/a9a8458092327cfd1a1edb8db6118be874867259
 U
 %src/main/java/symtab/ClassSymbol.java,0/e/0e1a7bb826f4cb69d2535a80c339227f6575c98b
-]
--src/main/java/symtab/DataAggregateSymbol.java,d/4/d4d369c6c03d1c1fc40ae504542f3d691e5b5702
 V
 &src/main/java/symtab/MethodSymbol.java,d/3/d305fe22131c85a6028d1a6131e93b1be27bf0c7
 V
 &src/main/java/symtab/MemberSymbol.java,5/3/53a2525a44cac66fa3960deea1dbd17431346ca1
-P
- src/main/java/symtab/Symbol.java,1/d/1d0a971a0d195c238814874e346a64633569fe57
 W
 'src/main/java/symtab/PrimitiveType.java,c/6/c6d18a8c09cb624768e4edab4a1012c9bba51170
-U
-%src/main/java/symtab/TypedSymbol.java,9/7/9757c9274cfda70fbd11310334b7011080732d0c
 o
 ?build/generated-src/antlr/main/symtab/simple/SimpleVisitor.java,8/f/8fe5d5af66c081ae523f5c4ebc53622e3cac998a
 p
@@ -91,13 +83,21 @@ m
 =build/generated-src/antlr/main/symtab/simple/SimpleLexer.java,2/b/2b5e39cfddab2a0a965edb3435e05aa5c414fedb
 s
 Cbuild/generated-src/antlr/main/symtab/simple/SimpleBaseVisitor.java,6/a/6a07ebf53bd74289b84dbeeec903bc98b5d40f3f
-Y
-)src/main/java/symtab/SymbolWithScope.java,6/5/6598542747eb3c124f8bacaf43ba13fd18da970f
-T
-$src/main/java/symtab/BaseSymbol.java,b/9/b96916d0386ec11e8f3031bd7bbb5351dffd4b1c
 t
 Dbuild/generated-src/antlr/main/symtab/simple/SimpleBaseListener.java,f/3/f3c0300015183b03429d0d4a174f15599f6dc245
 R
 "src/main/java/lexer/ListLexer.java,6/9/697a43779ca7d96109df53491173af7d83fa9bea
 [
 +src/test/java/parser/rd/ListParserTest.java,5/8/5856e8fdaffdcb910aa7f6590dda010a4538d790
+V
+&src/main/antlr/symtab/simple/Simple.g4,a/6/a6c0fcea4cc88f1477183a7da71711e8a37e8718
+O
+src/main/java/symtab/Scope.java,a/6/a6944770e11c9488786f159e922d0b5d49319dca
+h
+8src/test/java/symtab/simple/DefSymbolsAndScopesTest.java,c/c/cc711e479ba9bc6fa42ccf6465da64c9e748cab0
+X
+(src/main/java/symtab/FunctionSymbol.java,7/b/7b3ce4b0c203a46cb711751703bde779fe4cdb21
+V
+&src/main/java/symtab/StructSymbol.java,b/0/b006012d7616dc2b542d70efc47cfd8e091984d7
+U
+%src/main/java/symtab/SymbolTable.java,9/b/9b0cb6022497ab38f002303c81c80dcd3cdbfedf
