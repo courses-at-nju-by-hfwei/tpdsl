@@ -17,18 +17,20 @@ varDecl : type ID ('=' expr)? ';' ;
 
 structDecl : 'struct' ID '{' structMember+ '}' ';' ;
 
-structMember : type ID ';'
-             | structDecl
+structMember : type ID ';'  # field
+             | structDecl   # structField
              ;
 
 functionDecl : type ID '(' paras? ')' block ;
 
-paras : type ID (',' type ID)* ;
+paras : type para (',' type para)* ;
 
-type : 'int'
-     | 'float'
-     | 'void'
-     | ID   // struct type name
+para : ID ;
+
+type : 'int'    # primitiveType
+     | 'float'  # primitiveType
+     | 'void'   # primitiveType
+     | ID       # idType // struct type name
      ;
 
 block : '{' stat* '}' ;
@@ -44,21 +46,25 @@ stat : block
      | expr ';'
      ;
 
-expr: '(' expr ')'
-    | ID '(' args? ')'        // function call
-    | expr '[' expr ']'       // array subscripts
-    | expr '.' expr           // member access (hfwei)
-    | '-' expr
-    | '!' expr
-    | <assoc=right> expr '^' expr
-    | expr ('*'|'/') expr
-    | expr ('+'|'-') expr
-    | expr ('<' | '<=' | '>' | '>=') expr
-    | expr ('==' | '!=') expr
-    | expr ('&&' | '||') expr
-    | ID
-    | INT
+expr: '(' expr ')'          # paraExpr
+    | ID '(' args? ')'      # funcCallExpr
+    | expr '[' expr ']'     # arraySubExpr
+    | member                # memberExpr // hfwei
+    | '-' expr              # negExpr
+    | '!' expr              # notExpr
+    | <assoc=right> expr '^' expr   # powerExpr
+    | expr ('*'|'/') expr           # mulDivExpr
+    | expr ('+'|'-') expr           # addSubExpr
+    | expr ('<' | '<=' | '>' | '>=') expr   # relExpr
+    | expr ('==' | '!=') expr       # eqExpr
+    | expr ('&&' | '||') expr       # logicalExpr
+    | ID                            # idExpr
+    | INT                           # intExpr
     ;
+
+member : member '.' ID  # memberAccess
+       | ID             # memberID
+       ;
 
 args : expr (',' expr)* ;
 ////////////////////////////////////////////

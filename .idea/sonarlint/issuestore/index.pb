@@ -51,30 +51,6 @@ T
 $src/main/antlr/parser/rd/NameList.g4,4/c/4c9332745387e724c1a508273ca8a8677de5268d
 L
 src/main/antlr/ir/VecMath.g4,3/1/31464ada237bf4831cfe66b583cba88376b23d5f
-U
-%src/main/java/symtab/StringTable.java,f/6/f65aec9127b871752635f3793183decc52e29e92
-S
-#src/main/java/symtab/TypeAlias.java,e/2/e236347f3da9570677b29dc0be274a4ff2298dec
-O
-src/main/java/symtab/Utils.java,3/b/3b511de4a3b4786f0cf9ad74210c14547cb224ab
-S
-#src/main/java/symtab/ArrayType.java,9/e/9ef372d40a81ee00fcbfa1935bc0cf5ffdc3d1b5
-U
-%src/main/java/symtab/PointerType.java,8/0/80715eeb9ff3d0f57128692f50a60a7d1544a0ff
-V
-&src/main/java/symtab/FunctionType.java,e/8/e8ad1de7eb3ae2d7b208b75e1fbaa7c8371be478
-N
-src/main/java/symtab/Type.java,2/4/24904b1e9093b21e6c4e01a0a5b0adab4720b0cc
-Y
-)src/main/java/symtab/ParameterSymbol.java,a/9/a9a8458092327cfd1a1edb8db6118be874867259
-U
-%src/main/java/symtab/ClassSymbol.java,0/e/0e1a7bb826f4cb69d2535a80c339227f6575c98b
-V
-&src/main/java/symtab/MethodSymbol.java,d/3/d305fe22131c85a6028d1a6131e93b1be27bf0c7
-V
-&src/main/java/symtab/MemberSymbol.java,5/3/53a2525a44cac66fa3960deea1dbd17431346ca1
-W
-'src/main/java/symtab/PrimitiveType.java,c/6/c6d18a8c09cb624768e4edab4a1012c9bba51170
 o
 ?build/generated-src/antlr/main/symtab/simple/SimpleVisitor.java,8/f/8fe5d5af66c081ae523f5c4ebc53622e3cac998a
 p
@@ -91,13 +67,3 @@ R
 +src/test/java/parser/rd/ListParserTest.java,5/8/5856e8fdaffdcb910aa7f6590dda010a4538d790
 V
 &src/main/antlr/symtab/simple/Simple.g4,a/6/a6c0fcea4cc88f1477183a7da71711e8a37e8718
-O
-src/main/java/symtab/Scope.java,a/6/a6944770e11c9488786f159e922d0b5d49319dca
-h
-8src/test/java/symtab/simple/DefSymbolsAndScopesTest.java,c/c/cc711e479ba9bc6fa42ccf6465da64c9e748cab0
-X
-(src/main/java/symtab/FunctionSymbol.java,7/b/7b3ce4b0c203a46cb711751703bde779fe4cdb21
-V
-&src/main/java/symtab/StructSymbol.java,b/0/b006012d7616dc2b542d70efc47cfd8e091984d7
-U
-%src/main/java/symtab/SymbolTable.java,9/b/9b0cb6022497ab38f002303c81c80dcd3cdbfedf
