@@ -1,11 +1,10 @@
-package symtab;
+package symtab.symboltable;
 
 import org.antlr.v4.runtime.ParserRuleContext;
 
 /**
- * This symbol represents a function ala C, not a method ala Java.
  * You can associate a node in the parse tree
- * that is responsible for defining this symbol.
+ * that is responsible for defining this function symbol.
  */
 public class FunctionSymbol extends SymbolWithScope implements TypedSymbol {
 	protected ParserRuleContext defNode;
@@ -38,16 +37,20 @@ public class FunctionSymbol extends SymbolWithScope implements TypedSymbol {
 		retType = type;
 	}
 
-	/** Return the number of VariableSymbols specifically defined in the scope.
-	 *  This is useful as either the number of parameters or the number of
-	 *  parameters and locals depending on how you build the scope tree.
+	/**
+	 * Return the number of VariableSymbols
+	 * specifically defined in the scope.
+	 *
+	 * This is useful as either the number of parameters
+	 * or the number of parameters and locals
+	 * depending on how you build the scope tree.
 	 */
 	public int getNumberOfVariables() {
-		return Utils.filter(symbols.values(), s -> s instanceof VariableSymbol).size();
+		return Utils.filter(symbols.values(), VariableSymbol.class::isInstance).size();
 	}
 
 	public int getNumberOfParameters() {
-		return Utils.filter(symbols.values(), s -> s instanceof ParameterSymbol).size();
+		return Utils.filter(symbols.values(), ParameterSymbol.class::isInstance).size();
 	}
 
 	@Override

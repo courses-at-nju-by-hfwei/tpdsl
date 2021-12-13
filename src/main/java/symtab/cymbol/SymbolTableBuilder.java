@@ -1,6 +1,7 @@
 package symtab.cymbol;
 
 import org.antlr.v4.runtime.tree.ParseTreeProperty;
+import symtab.symboltable.Scope;
 import symtab.symboltable.*;
 
 public class SymbolTableBuilder extends CymbolBaseListener {

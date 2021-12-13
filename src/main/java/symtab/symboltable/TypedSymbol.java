@@ -1,4 +1,4 @@
-package symtab;
+package symtab.symboltable;
 
 /**
  * This interface tags user-defined symbols

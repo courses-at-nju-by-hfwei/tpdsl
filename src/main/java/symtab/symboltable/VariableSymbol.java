@@ -1,4 +1,4 @@
-package symtab;
+package symtab.symboltable;
 
 public class VariableSymbol extends BaseSymbol implements TypedSymbol {
 	public VariableSymbol(String name) {

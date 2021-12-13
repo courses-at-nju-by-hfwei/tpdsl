@@ -1,4 +1,4 @@
-package symtab;
+package symtab.symboltable;
 
 public class PrimitiveType extends BaseSymbol implements Type {
 	protected int typeIndex;

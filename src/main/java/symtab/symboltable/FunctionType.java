@@ -1,10 +1,7 @@
-package symtab;
+package symtab.symboltable;
 
 import java.util.List;
 
-/** For C types like "void (*)(int)", we need that to be a pointer to a function
- *  taking a single integer argument returning void.
- */
 public class FunctionType implements Type {
 	protected final Type returnType;
 	protected final List<Type> argumentTypes;
@@ -20,7 +17,9 @@ public class FunctionType implements Type {
 	}
 
 	@Override
-	public int getTypeIndex() { return -1; }
+	public int getTypeIndex() {
+		return -1;
+	}
 
 	public List<Type> getArgumentTypes() {
 		return argumentTypes;

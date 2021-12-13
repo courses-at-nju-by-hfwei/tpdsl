@@ -1,4 +1,4 @@
-package symtab;
+package symtab.symboltable;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -7,14 +7,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-/** An abstract base class that houses common functionality for scopes. */
 public abstract class BaseScope implements Scope {
 	protected Scope enclosingScope; // null if this scope is the root of the scope tree
 
 	/**
 	 * All symbols defined in this scope;
-	 * can include classes, functions, variables,
+	 * can include functions, variables,
 	 * or anything else that is a Symbol impl.
+	 *
 	 * It does NOT include non-Symbol-based things like LocalScope.
 	 * See nestedScopes.
 	 */
@@ -30,7 +30,9 @@ public abstract class BaseScope implements Scope {
 
 	public BaseScope() { }
 
-	public BaseScope(Scope enclosingScope) { setEnclosingScope(enclosingScope);	}
+	public BaseScope(Scope enclosingScope) {
+		setEnclosingScope(enclosingScope);
+	}
 
 	public Map<String, ? extends Symbol> getMembers() {
 		return symbols;
@@ -96,7 +98,6 @@ public abstract class BaseScope implements Scope {
 			throw new IllegalArgumentException("duplicate symbol "+sym.getName());
 		}
 		sym.setScope(this);
-		sym.setInsertionOrderNumber(symbols.size()); // set to insertion position from 0
 		symbols.put(sym.getName(), sym);
 	}
 
@@ -116,23 +117,6 @@ public abstract class BaseScope implements Scope {
 		return s;
 	}
 
-	/**
-	 * Walk up enclosingScope until we find an object of a specific type.
-	 * E.g., if you want to get enclosing method, you would pass in
-	 * MethodSymbol.class, unless of course you have created a subclass for
-	 * your language implementation.
-	 */
-	public MethodSymbol getEnclosingScopeOfType(Class<?> type) {
-		Scope s = this;
-		while ( s!=null ) {
-			if ( s.getClass()==type ) {
-				return (MethodSymbol)s;
-			}
-			s = s.getEnclosingScope();
-		}
-		return null;
-	}
-
 	@Override
 	public List<Scope> getEnclosingPathToRoot() {
 		List<Scope> scopes = new ArrayList<>();
@@ -145,7 +129,7 @@ public abstract class BaseScope implements Scope {
 	}
 
 	@Override
-	public List<? extends Symbol> getSymbols() {
+	public List<Symbol> getSymbols() {
 		Collection<Symbol> values = symbols.values();
 		if ( values instanceof List ) {
 			return (List<Symbol>)values;
@@ -153,7 +137,7 @@ public abstract class BaseScope implements Scope {
 		return new ArrayList<>(values);
 	}
 
-	public List<? extends Symbol> getAllSymbols() {
+	public List<Symbol> getAllSymbols() {
 		List<Symbol> syms = new ArrayList<>();
 		syms.addAll(getSymbols());
 		for (Symbol s : symbols.values()) {

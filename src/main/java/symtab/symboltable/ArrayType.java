@@ -1,4 +1,4 @@
-package symtab;
+package symtab.symboltable;
 
 /** An element within a type type such is used in C or Java where we need to
  *  indicate the type is an array of some element type like float[] or User[].

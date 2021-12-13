@@ -1,12 +1,12 @@
-package symtab;
+package symtab.symboltable;
 
 /**
- * A scope to hold predefined symbols of your language.
+ * A scope to hold predefined symbols.
  * This could be a list of type names like int or methods like print.
  */
 public class PredefinedScope extends BaseScope {
 	@Override
 	public String getName() {
-		return "predefined";
+		return "Predefined Scope";
 	}
 }

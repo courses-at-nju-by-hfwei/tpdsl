@@ -1,6 +1,5 @@
-package symtab;
+package symtab.symboltable;
 
-/** A scope object typically associated with {...} code blocks */
 public class LocalScope extends BaseScope {
 	public LocalScope(Scope enclosingScope) {
 		super(enclosingScope);
@@ -8,6 +7,6 @@ public class LocalScope extends BaseScope {
 
 	@Override
 	public String getName() {
-		return "local";
+		return "Local Scope";
 	}
 }

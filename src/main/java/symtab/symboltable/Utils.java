@@ -1,4 +1,4 @@
-package symtab;
+package symtab.symboltable;
 
 import org.antlr.v4.runtime.Parser;
 import org.antlr.v4.runtime.ParserRuleContext;
